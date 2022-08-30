@@ -23,7 +23,7 @@ type ymlConfig struct {
 	} `yml:"mysql"`
 }
 
-func (cfg *ymlConfig) LocalInit(ymlPath string) error {
+func (cfg *ymlConfig) Init(ymlPath string) error {
 	file, err := ioutil.ReadFile(ymlPath)
 	if err != nil {
 		return err
@@ -34,11 +34,11 @@ func (cfg *ymlConfig) LocalInit(ymlPath string) error {
 	if cfg.Mysql.Url == "" {
 		return errors.New("mysql.url not null")
 	}
-	cfg.fillIfNeed()
+	cfg.fillNull()
 	return nil
 }
 
-func (cfg *ymlConfig) fillIfNeed() {
+func (cfg *ymlConfig) fillNull() {
 	if cfg.Mysql.Pool.Max == 0 {
 		cfg.Mysql.Pool.Max = 20
 	}
@@ -57,6 +57,6 @@ func (cfg *ymlConfig) isCorrect() bool {
 	if cfg.Mysql.Url == "" {
 		return false
 	}
-	cfg.fillIfNeed()
+	cfg.fillNull()
 	return true
 }

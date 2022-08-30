@@ -5,7 +5,7 @@ import "gorm.io/gorm"
 type Enter struct{}
 
 /*
-LocalInit 本地初始化
+Init 本地初始化
 
 示例
 
@@ -18,8 +18,8 @@ mysql:
       idle: 60 可选
       life: 60 可选
 */
-func (*Enter) LocalInit(ymlPath string) error {
-	err := config.LocalInit(ymlPath)
+func (*Enter) Init(ymlPath string) error {
+	err := config.Init(ymlPath)
 	if err != nil {
 		return err
 	}
