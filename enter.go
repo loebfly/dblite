@@ -1,8 +1,8 @@
 package dblite
 
 import (
-	"dblite/mysql"
 	"errors"
+	"github.com/loebfly/dblite/mysql"
 )
 
 var Mysql = new(mysql.Enter)

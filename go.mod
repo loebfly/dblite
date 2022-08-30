@@ -1,4 +1,4 @@
-module dblite
+module github.com/loebfly/dblite
 
 go 1.17
 
