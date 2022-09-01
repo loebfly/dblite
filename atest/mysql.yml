@@ -1,0 +1,8 @@
+mysql:
+  url: ""
+  pool:
+    max: 20
+    idle: 10
+    timeout:
+      idle: 60
+      life: 60

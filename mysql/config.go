@@ -2,6 +2,7 @@ package mysql
 
 import (
 	"errors"
+	"github.com/loebfly/dblite/yml"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 )
@@ -9,18 +10,7 @@ import (
 var config = new(ymlConfig)
 
 type ymlConfig struct {
-	Mysql struct {
-		Url   string `yml:"url"`
-		Debug bool   `yml:"debug"`
-		Pool  struct {
-			Max     int `yml:"max"`
-			Idle    int `yml:"idle"`
-			Timeout struct {
-				Idle int `yml:"idle"`
-				Life int `yml:"life"`
-			} `yml:"timeout"`
-		}
-	} `yml:"mysql"`
+	Mysql yml.Mysql `yml:"mysql"`
 }
 
 func (cfg *ymlConfig) Init(ymlPath string) error {
@@ -34,6 +24,15 @@ func (cfg *ymlConfig) Init(ymlPath string) error {
 	if cfg.Mysql.Url == "" {
 		return errors.New("mysql.url not null")
 	}
+	cfg.fillNull()
+	return nil
+}
+
+func (cfg *ymlConfig) InitObj(obj yml.Mysql) error {
+	if obj.Url == "" {
+		return errors.New("mysql.url not null")
+	}
+	cfg.Mysql = obj
 	cfg.fillNull()
 	return nil
 }

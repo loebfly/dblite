@@ -1,6 +1,9 @@
 package mysql
 
-import "gorm.io/gorm"
+import (
+	"github.com/loebfly/dblite/yml"
+	"gorm.io/gorm"
+)
 
 type Enter struct{}
 
@@ -20,6 +23,19 @@ mysql:
 */
 func (*Enter) Init(ymlPath string) error {
 	err := config.Init(ymlPath)
+	if err != nil {
+		return err
+	}
+	err = ctl.connect()
+	if err != nil {
+		return err
+	}
+	ctl.autoRetry()
+	return nil
+}
+
+func (*Enter) InitObj(obj yml.Mysql) error {
+	err := config.InitObj(obj)
 	if err != nil {
 		return err
 	}
