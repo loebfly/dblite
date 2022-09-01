@@ -3,14 +3,14 @@ package mysql
 import (
 	"errors"
 	"github.com/loebfly/dblite/yml"
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
 	"io/ioutil"
 )
 
 var config = new(ymlConfig)
 
 type ymlConfig struct {
-	Mysql yml.Mysql `yml:"mysql"`
+	Mysql yml.Mysql `yaml:"mysql"`
 }
 
 func (cfg *ymlConfig) Init(ymlPath string) error {

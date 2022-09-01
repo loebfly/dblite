@@ -1,17 +1,17 @@
 package yml
 
 type Redis struct {
-	Host     string    `yml:"host"`
-	Port     int       `yml:"port"`
-	Password string    `yml:"password"`
-	Database int       `yml:"database"`
-	Timeout  int       `yml:"timeout"`
-	Pool     RedisPool `yml:"pool"`
+	Host     string    `yaml:"host"`
+	Port     int       `yaml:"port"`
+	Password string    `yaml:"password"`
+	Database int       `yaml:"database"`
+	Timeout  int       `yaml:"timeout"`
+	Pool     RedisPool `yaml:"pool"`
 }
 
 type RedisPool struct {
-	Min     int `yml:"min"`
-	Max     int `yml:"max"`
-	Idle    int `yml:"idle"`
-	Timeout int `yml:"timeout"`
+	Min     int `yaml:"min"`
+	Max     int `yaml:"max"`
+	Idle    int `yaml:"idle"`
+	Timeout int `yaml:"timeout"`
 }

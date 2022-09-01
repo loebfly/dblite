@@ -8,9 +8,9 @@ mysql:
       life: 60
 
 redis:
-  host: 59.56.77.23
-  port: 56379
-  password: fireCloud
+  host:
+  port:
+  password:
   database: 5
   timeout: 1000
   pool:
@@ -18,3 +18,8 @@ redis:
     max: 20
     idle: 10
     timeout: 300
+
+mongo:
+  url:
+  database:
+  pool_max: 20

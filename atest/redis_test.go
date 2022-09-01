@@ -27,7 +27,7 @@ func TestRedis(t *testing.T) {
 		return
 	}
 
-	val := rds.Get("").Val()
+	val := rds.Get("partner:general:id").Val()
 	t.Log(val)
 	dblite.Redis.SafeExit()
 }

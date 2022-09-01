@@ -2,17 +2,20 @@ package dblite
 
 import (
 	"errors"
+	"github.com/loebfly/dblite/mongo"
 	"github.com/loebfly/dblite/mysql"
 	"github.com/loebfly/dblite/redis"
 )
 
 var Mysql = new(mysql.Enter)
+var Mongo = new(mongo.Enter)
 var Redis = new(redis.Enter)
 
 type Use string
 
 const (
 	UseMysql Use = "mysql"
+	UseMongo Use = "mongo"
 	UseRedis Use = "redis"
 )
 
@@ -25,6 +28,12 @@ func Init(ymlPath string, use ...Use) error {
 		switch v {
 		case UseMysql:
 			err := Mysql.Init(ymlPath)
+			if err != nil {
+				errStr += err.Error()
+				errStr += ";"
+			}
+		case UseMongo:
+			err := Mongo.Init(ymlPath)
 			if err != nil {
 				errStr += err.Error()
 				errStr += ";"
@@ -47,5 +56,6 @@ func Init(ymlPath string, use ...Use) error {
 
 func SafeExit() {
 	Mysql.SafeExit()
+	Mongo.SafeExit()
 	Redis.SafeExit()
 }

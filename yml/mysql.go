@@ -1,18 +1,18 @@
 package yml
 
 type Mysql struct {
-	Url   string    `yml:"url" json:"url"`
-	Debug bool      `yml:"debug" json:"debug"`
-	Pool  MysqlPool `yml:"pool" json:"pool"`
+	Url   string    `yaml:"url" json:"url"`
+	Debug bool      `yaml:"debug" json:"debug"`
+	Pool  MysqlPool `yaml:"pool" json:"pool"`
 }
 
 type MysqlPool struct {
-	Max     int              `yml:"max" json:"max"`
-	Idle    int              `yml:"idle" json:"idle"`
-	Timeout MysqlPoolTimeout `yml:"timeout" json:"timeout"`
+	Max     int              `yaml:"max" json:"max"`
+	Idle    int              `yaml:"idle" json:"idle"`
+	Timeout MysqlPoolTimeout `yaml:"timeout" json:"timeout"`
 }
 
 type MysqlPoolTimeout struct {
-	Idle int `yml:"idle" json:"idle"`
-	Life int `yml:"life" json:"life"`
+	Idle int `yaml:"idle" json:"idle"`
+	Life int `yaml:"life" json:"life"`
 }
