@@ -7,7 +7,7 @@ import (
 )
 
 func TestMysql(t *testing.T) {
-	//ymlPath := "/github.com/dblite/test/mysql.yml"
+	//ymlPath := "/github.com/dblite/atest/app.yml"
 	//err := dblite.Init(ymlPath, dblite.UseMysql)
 	//err := dblite.Mysql.Init(ymlPath)
 	err := dblite.Mysql.InitObj(yml.Mysql{
@@ -48,4 +48,5 @@ func TestMysql(t *testing.T) {
 		return
 	}
 	t.Log(ip)
+	dblite.Mysql.SafeExit()
 }

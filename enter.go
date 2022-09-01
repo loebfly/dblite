@@ -3,14 +3,17 @@ package dblite
 import (
 	"errors"
 	"github.com/loebfly/dblite/mysql"
+	"github.com/loebfly/dblite/redis"
 )
 
 var Mysql = new(mysql.Enter)
+var Redis = new(redis.Enter)
 
 type Use string
 
 const (
 	UseMysql Use = "mysql"
+	UseRedis Use = "redis"
 )
 
 func Init(ymlPath string, use ...Use) error {
@@ -26,6 +29,12 @@ func Init(ymlPath string, use ...Use) error {
 				errStr += err.Error()
 				errStr += ";"
 			}
+		case UseRedis:
+			err := Redis.Init(ymlPath)
+			if err != nil {
+				errStr += err.Error()
+				errStr += ";"
+			}
 		default:
 			errStr += "use type is not support"
 		}
@@ -34,4 +43,9 @@ func Init(ymlPath string, use ...Use) error {
 		return errors.New(errStr)
 	}
 	return nil
+}
+
+func SafeExit() {
+	Mysql.SafeExit()
+	Redis.SafeExit()
 }

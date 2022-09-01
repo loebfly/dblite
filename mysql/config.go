@@ -53,9 +53,5 @@ func (cfg *ymlConfig) fillNull() {
 }
 
 func (cfg *ymlConfig) isCorrect() bool {
-	if cfg.Mysql.Url == "" {
-		return false
-	}
-	cfg.fillNull()
-	return true
+	return cfg.Mysql.Url != ""
 }

@@ -1,0 +1,20 @@
+mysql:
+  url: ""
+  pool:
+    max: 20
+    idle: 10
+    timeout:
+      idle: 60
+      life: 60
+
+redis:
+  host: 59.56.77.23
+  port: 56379
+  password: fireCloud
+  database: 5
+  timeout: 1000
+  pool:
+    min: 3
+    max: 20
+    idle: 10
+    timeout: 300
