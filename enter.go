@@ -7,20 +7,20 @@ import (
 
 var Mysql = new(mysql.Enter)
 
-type UseType string
+type Use string
 
 const (
-	UseTypeMysql UseType = "mysql"
+	UseMysql Use = "mysql"
 )
 
-func Init(ymlPath string, use ...UseType) error {
+func Init(ymlPath string, use ...Use) error {
 	if len(use) == 0 {
 		return errors.New("use type is empty")
 	}
 	var errStr string
 	for _, v := range use {
 		switch v {
-		case UseTypeMysql:
+		case UseMysql:
 			err := Mysql.Init(ymlPath)
 			if err != nil {
 				errStr += err.Error()

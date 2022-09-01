@@ -8,7 +8,7 @@ import (
 
 func TestMysql(t *testing.T) {
 	//ymlPath := "/github.com/dblite/test/mysql.yml"
-	//err := dblite.Init(ymlPath, dblite.UseTypeMysql)
+	//err := dblite.Init(ymlPath, dblite.UseMysql)
 	//err := dblite.Mysql.Init(ymlPath)
 	err := dblite.Mysql.InitObj(yml.Mysql{
 		Url:   "",
